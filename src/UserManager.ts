@@ -1,6 +1,8 @@
 
 import { User, Room } from './schema/User.schema';
 import { connection } from 'websocket';
+import { OutgoingMessage } from './schema/OutgoingMsg.shema';
+
 export class UserManager {
     private rooms: Map<string, Room>;
     constructor() {
@@ -36,7 +38,7 @@ export class UserManager {
     getRoom(roomId: string): Room | undefined {
         return this.rooms.get(roomId);
     }
-    broadcast(roomId: string, message: string,userId:string): void {
+    broadcast(roomId: string, message: OutgoingMessage,userId:string): void {
         const user = this.getUser(roomId,userId);
         if (!user) return;
         const room = this.getRoom(roomId);

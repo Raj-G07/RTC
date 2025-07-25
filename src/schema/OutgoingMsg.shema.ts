@@ -1,4 +1,4 @@
-type MessagePayload = {
+export type MessagePayload = {
     roomId: string;
     message: string;
     name: string;
